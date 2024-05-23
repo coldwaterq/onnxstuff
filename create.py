@@ -19,7 +19,7 @@ while len(a.graph.node) > 0:
 # add a graph node that creates a num by num tensor of random data
 # for max memory usagen and run time
 #   sqrt(system mem / 4)
-#   on 256GB system 200000 uses ~200GB
+#   266144 uses 256GB + virtual mem - basically locks up Windows
 # for a crash
 #   Something larger than (sqrt of system memory)/2
 #   2147483647/2
