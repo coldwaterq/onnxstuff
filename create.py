@@ -14,7 +14,14 @@ def printFieldNames(pro):
 
 # delete all graph nodes
 while len(a.graph.node) > 0:
-    a.graph.node.pop()
+    b = a.graph.node.pop()
+    
+    printFieldNames(b)
+    print(b.domain)
+    print(b.name)
+    print(b.op_type)
+    if b.domain != '':
+        exit()
 
 # add a graph node that creates a num by num tensor of random data
 # for max memory usagen and run time
@@ -41,6 +48,7 @@ a.graph.node.append(
     )
 )
 
+
 # change the graph output to be the random data
 a.graph.output[0].name="fun1"
 a.graph.output[0].type.tensor_type.shape.dim[0].dim_value=num
@@ -48,7 +56,9 @@ a.graph.output[0].type.tensor_type.shape.dim[1].dim_value=num
 
 # delete all value info
 while len(a.graph.value_info) > 0:
+    
     a.graph.value_info.pop()
+    
 
 # delete all initializer data
 while len(a.graph.initializer) > 0:
@@ -57,6 +67,10 @@ while len(a.graph.initializer) > 0:
 # delte all input data
 while len(a.graph.input) > 0:
     a.graph.input.pop()
+
+
+print(a.graph)
+exit()
 
 # create the onnx file
 data = a.SerializeToString()
